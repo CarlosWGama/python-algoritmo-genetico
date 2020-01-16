@@ -28,7 +28,7 @@ class AlgoritmoGenetico:
         while (self.geracao < self.limGeracoes):
             #Inicia uma nova população vazia
             novaPopulacao = []
-            for i in range(int(self.tamPopulacao/2)):
+            for _ in range(int(self.tamPopulacao/2)):
                 pai1 = self.funSelecao(self.populacao)
                 pai2 = self.funSelecao(self.populacao)
 
@@ -54,7 +54,7 @@ class AlgoritmoGenetico:
 
     def criaPopulacaoInicial(self):
         """ Cria a primeira população """
-        for i in range(self.tamPopulacao):
+        for _ in range(self.tamPopulacao):
             cromossomo = {'fitness': 0, 'genes': self.funCriaIndividuo(self.dados)}
             cromossomo['fitness'] = self.funcaoFitness(cromossomo['genes'], self.dados)
             self.populacao.append(cromossomo)
@@ -63,7 +63,7 @@ class AlgoritmoGenetico:
     def criaIndividuo(self, dados):
         """ Cria um novo individuo """
         gene = []
-        for i in range(len(dados)):
+        for _ in range(len(dados)):
             gene.append(random.randint(0,1))
         return gene
 
