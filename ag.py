@@ -51,6 +51,7 @@ class AlgoritmoGenetico:
             self.populacao.sort(key=lambda c:c['fitness'], reverse=self.maiorFitness)
             self.populacao = self.populacao[:self.tamPopulacao]
             self.geracao += 1 #Incrementa geração
+            print(self.geracao, '-', self.melhorResultado())
 
     def criaPopulacaoInicial(self):
         """ Cria a primeira população """
