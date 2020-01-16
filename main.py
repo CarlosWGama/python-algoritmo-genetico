@@ -1,4 +1,3 @@
-from pyeasyga.pyeasyga import GeneticAlgorithm
 from ag import AlgoritmoGenetico
 
 dados = [
@@ -10,22 +9,21 @@ dados = [
     {'item': 'Cálculadora', 'peso': 3, 'valor': 3},
 ]
 
-#Exemplo de função fitness
-def funFitness(cromossomo, caracteriticas):
+def funFitness(genes, dados):
     peso = 0
     valor = 0
-    for i in range(len(cromossomo)):
-        if (cromossomo[i] == 1):
-            peso += caracteriticas[i]['peso']
-            valor += caracteriticas[i]['valor']
-    #Fitness
+    
+    for i in range(len(genes)):
+        #Adiciona os itens na bolsa
+        if (genes[i]==1):
+            peso += dados[i]['peso']
+            valor += dados[i]['valor']
+    
     if (peso > 10):
         return 0
     return valor
 
-ag = AlgoritmoGenetico(dados, funcaoFitness=funFitness)
-
+ag = AlgoritmoGenetico(dados,funcaoFitness=funFitness)
 ag.executa()
-print(ag.melhorResultado())
-# print(ag.geracao)
-# print(ag.populacao)
+print(ag.populacao)
+
